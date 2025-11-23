@@ -13,10 +13,11 @@ const dvdRouter = require("./routes/dvdRouter");
 const app = express();
 
 
-mongoose.connect("mongodb://localhost:27017/biblioteca", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
+
 
 
 
