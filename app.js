@@ -59,14 +59,3 @@ app.listen(PORT, '0.0.0.0', () => {
 });
 
 module.exports = app;
-```
-
-### O que fazer agora (Importante):
-1.  **Copie** o código acima.
-2.  **Substitua** tudo o que está no seu arquivo `app.js`.
-3.  **Salve** o arquivo.
-4.  Faça o processo no terminal de novo para atualizar o Railway:
-    ```bash
-    git add .
-    git commit -m "Adicionando rotas do frontend no app.js"
-    git push
