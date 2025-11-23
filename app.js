@@ -12,45 +12,35 @@ const dvdRouter = require("./routes/dvdRouter");
 
 const app = express();
 
+// ⛔ Não use localhost no Railway — deixe aberto
+app.use(cors());
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-});
-
-
-
-
-app.use(cors({
-    origin: 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-}));
+})
+.then(() => console.log("MongoDB conectado"))
+.catch(err => console.error("Erro no MongoDB:", err));
 
 
 app.use(logger("dev"));
-app.use(express.json()); 
+app.use(express.json());
 app.use(cookieParser());
 
-
-
+// Middleware de auth
 app.use((req, res, next) => {
   if (req.method === "GET") return next();
-  return auth(req, res, next);
+  auth(req, res, next);
 });
-
 
 app.use("/autores", autorRouter);
 app.use("/livros", livroRouter);
 app.use("/cds", cdRouter);
 app.use("/dvds", dvdRouter);
 
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 API rodando em http://localhost:${PORT}`);
-    console.log(`Frontend deve estar em http://localhost:5173`);
+  console.log(`🚀 API rodando na porta ${PORT}`);
 });
-
 
 module.exports = app;
