@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 
 const AUTH_HEADER = 'Basic YWRtaW46cGFzc3dvcmQ='; 
-const API_BASE_URL = 'http://localhost:3000'; 
+const API_BASE_URL = ''; 
 
 function App() {
   const [autores, setAutores] = useState([]);
