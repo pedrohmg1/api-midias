@@ -4,7 +4,9 @@
   "description": "API de biblioteca com autores, livros, CDs e DVDs",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "cd catalogo-frontend/catalogo-frontend && npm install && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
